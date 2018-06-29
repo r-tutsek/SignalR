@@ -23,6 +23,12 @@ namespace SignalRTest.Controllers
             _hubContext = GlobalHost.ConnectionManager.GetHubContext<QuoteManagementHub>();
         }
 
+        [HttpGet]
+        public List<QuoteEntity> GetAllQuotes()
+        {
+            return _quoteService.GetAllQuotes();
+        }
+
         [HttpPost]
         public IHttpActionResult AddQuote(QuoteEntity quoteEntity)
         {

@@ -17,6 +17,11 @@ namespace SignalRTestService.Service
             _quoteRespository = quoteRespository;
         }
 
+        public List<QuoteEntity> GetAllQuotes()
+        {
+            return _quoteRespository.GetAllData();
+        }
+
         public void AddQuote(QuoteEntity quoteEntity)
         {
             _quoteRespository.InsertData(quoteEntity);
