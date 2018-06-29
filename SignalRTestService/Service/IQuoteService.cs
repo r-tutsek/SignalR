@@ -10,5 +10,6 @@ namespace SignalRTestService.Service
     public interface IQuoteService
     {
         void AddQuote(QuoteEntity quoteEntity);
+        void DeleteQuote(int quoteId);
     }
 }

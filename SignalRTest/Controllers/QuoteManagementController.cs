@@ -30,5 +30,13 @@ namespace SignalRTest.Controllers
             _hubContext.Clients.All.AddQuote(quoteEntity);
             return Ok();
         }
+
+        [HttpPost]
+        public IHttpActionResult DeleteQuote(QuoteEntity quoteEntity)
+        {
+            _quoteService.DeleteQuote(quoteEntity.Id);
+            _hubContext.Clients.All.DeleteQuote(quoteEntity.Id);
+            return Ok();
+        }
     }
 }

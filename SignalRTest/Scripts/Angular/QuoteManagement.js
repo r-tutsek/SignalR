@@ -36,13 +36,28 @@
         };
 
         $scope.deleteQuote = function (quoteId) {
-            
+            var requestModel = {
+                Id: quoteId
+            };
+            $http.post(uri + "/DeleteQuote", requestModel)
+                .then(function successCallback(response) {
+                    console.log(response);
+                }, function errorCallback(response) {
+                    console.log(response);
+                });
         };
         
         hub.client.addQuote = function (item) {
             $scope.quotes.push(item);
             $scope.$apply();
         }
+
+        hub.client.deleteQuote = function (item) {
+            var index = $scope.quotes.indexOf(item);
+            $scope.quotes.splice(index, 1);
+            $scope.$apply();
+        }
+
         $.connection.hub.start();
 
         /*$scope.getAll = function () {

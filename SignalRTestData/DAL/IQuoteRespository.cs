@@ -10,6 +10,7 @@ namespace SignalRTestData.DAL
     public interface IQuoteRespository
     {
         void InsertData(QuoteEntity quoteEntity);
+        void DeleteData(int quoteId);
         List<QuoteEntity> GetAllData();
         void Save();
     }

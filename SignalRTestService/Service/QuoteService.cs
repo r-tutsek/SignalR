@@ -22,5 +22,11 @@ namespace SignalRTestService.Service
             _quoteRespository.InsertData(quoteEntity);
             _quoteRespository.Save();
         }
+
+        public void DeleteQuote(int quoteId)
+        {
+            _quoteRespository.DeleteData(quoteId);
+            _quoteRespository.Save();
+        }
     }
 }

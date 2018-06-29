@@ -23,6 +23,15 @@ namespace SignalRTestData.DAL
             context.QuoteContext.Add(entity);
         }
 
+        public void DeleteData(int quoteId)
+        {
+            var quoteRecord = context.QuoteContext.FirstOrDefault(q => q.Id == quoteId);
+            if(quoteRecord != null)
+            {
+                context.QuoteContext.Remove(quoteRecord);
+            }
+        }
+
         public List<QuoteEntity> GetAllData()
         {
             return context.QuoteContext.ToList();
