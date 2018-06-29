@@ -1,0 +1,74 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.quote-management-section {
+    margin-top: 50px;
+    border: 1px solid #000;   
+}
+
+.quote-management-section-inner {
+    padding: 20px;   
+}
+
+.quote-management-section-title {
+    border-bottom: 1px solid #000 !important;
+    padding: 10px !important;
+    background-color:#000;
+    color:#fff;
+}
+
+.quote {
+    width: 100%;
+    max-width: 100%;
+}
+
+.quote-management-btn {
+    min-width:100px;
+}
+
+.quotes-management-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-color: #ccc;
+}
+
+.quotes-management-table th {
+    padding: 5px;
+    text-align: center;
+    border-color: #ccc;
+}
+
+.quotes-management-table td {
+    padding: 5px;
+    text-align: center;
+    border-color: #ccc;
+}
+
+.quote-management-box {
+    margin-bottom:20px;
+}
+
+.no-padding {
+    padding:0px !important;
+}
+
+.quote-management-action-btn {
+    width: 100%;
+    max-width: 100%;
+    border-radius:0px !important;
+}

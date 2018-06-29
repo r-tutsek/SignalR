@@ -1,0 +1,45 @@
+﻿<section id="quote-management" class="quote-management-section" ng-app="quoteManagementApp" ng-controller="quoteManagementController">
+    <div class="quote-management-section-title"><h4>Section: Quote management</h4></div>
+    <div class="quote-management-section-inner">
+        <div class="quote-management-box">
+            <div class="input-group">
+                <span class="input-group-addon">Enter quote:</span>
+                <input type="text" name="quote" class="form-control quote" ng-model="quote" />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary quote-management-btn" ng-click="addQuote()">Add</button>
+                </span>
+            </div>
+        </div>
+        <div class="quotes-management-list-box">
+            <h5>List of added quotes:</h5>
+            <table class="quotes-management-table" border="1">
+                <colgroup>
+                    <col />
+                    <col width="200" />
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>Quote</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-if="quotes.length > 0" ng-repeat="quoteVal in quotes" ng-cloak>
+                        <td>{{quoteVal.Value}}</td>
+                        <td>
+                            <div class="col-lg-6 no-padding">
+                                <button type="button" class="btn btn-default quote-management-action-btn" ng-click="updateQuote(quoteVal.Id)">Edit</button>
+                            </div>
+                            <div class="col-lg-6 no-padding">
+                                <button type="button" class="btn btn-danger quote-management-action-btn" ng-click="deleteQuote(quoteVal.Id)">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr ng-if="quotes.length == 0">
+                        <td colspan="2">No quotes added yet...</td>
+                    </tr>                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
