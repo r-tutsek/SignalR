@@ -1102,17 +1102,17 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SignalRTestData\SignalRTestData.csproj">
+    <ProjectReference Include="..\SignalRTestData\SignalRData.csproj">
       <Project>{2254beed-875c-463f-ba40-150aeda8b859}</Project>
-      <Name>SignalRTestData</Name>
+      <Name>SignalRData</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SignalRTestEntity\SignalRTestEntity.csproj">
+    <ProjectReference Include="..\SignalRTestEntity\SignalREntity.csproj">
       <Project>{15eed0f8-97c9-435e-ad02-db069c41679d}</Project>
-      <Name>SignalRTestEntity</Name>
+      <Name>SignalREntity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SignalRTestService\SignalRTestService.csproj">
+    <ProjectReference Include="..\SignalRTestService\SignalRService.csproj">
       <Project>{560364f2-8df8-4788-ab31-427dace94861}</Project>
-      <Name>SignalRTestService</Name>
+      <Name>SignalRService</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

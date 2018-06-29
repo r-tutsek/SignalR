@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.27703.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR", "SignalRTest\SignalR.csproj", "{D8FCAD05-B2A4-46A8-A3D8-1B71BE4D5194}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRTestData", "SignalRTestData\SignalRTestData.csproj", "{2254BEED-875C-463F-BA40-150AEDA8B859}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRData", "SignalRTestData\SignalRData.csproj", "{2254BEED-875C-463F-BA40-150AEDA8B859}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRTestEntity", "SignalRTestEntity\SignalRTestEntity.csproj", "{15EED0F8-97C9-435E-AD02-DB069C41679D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalREntity", "SignalRTestEntity\SignalREntity.csproj", "{15EED0F8-97C9-435E-AD02-DB069C41679D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRTestService", "SignalRTestService\SignalRTestService.csproj", "{560364F2-8DF8-4788-AB31-427DACE94861}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRService", "SignalRTestService\SignalRService.csproj", "{560364F2-8DF8-4788-AB31-427DACE94861}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
