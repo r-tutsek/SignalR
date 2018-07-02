@@ -11,6 +11,7 @@ namespace SignalRTestService.Service
     {
         List<QuoteEntity> GetAllQuotes();
         void AddQuote(QuoteEntity quoteEntity);
+        void UpdateQuote(QuoteEntity quoteEntity);
         void DeleteQuote(int quoteId);
     }
 }

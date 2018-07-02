@@ -2,6 +2,8 @@
 using SignalRTestEntity.Entity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +23,15 @@ namespace SignalRTestData.DAL
         public void InsertData(QuoteEntity entity)
         {
             context.QuoteContext.Add(entity);
+        }
+
+        public void UpdateData(QuoteEntity entity)
+        {
+            var quoteRecord = context.QuoteContext.FirstOrDefault(q => q.Id == entity.Id);
+            if (quoteRecord != null)
+            {
+                quoteRecord.Value = entity.Value;
+            }
         }
 
         public void DeleteData(int quoteId)

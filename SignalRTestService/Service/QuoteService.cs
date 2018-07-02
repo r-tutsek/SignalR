@@ -28,6 +28,12 @@ namespace SignalRTestService.Service
             _quoteRespository.Save();
         }
 
+        public void UpdateQuote(QuoteEntity quoteEntity)
+        {
+            _quoteRespository.UpdateData(quoteEntity);
+            _quoteRespository.Save();
+        }
+
         public void DeleteQuote(int quoteId)
         {
             _quoteRespository.DeleteData(quoteId);

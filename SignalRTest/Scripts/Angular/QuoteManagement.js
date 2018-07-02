@@ -6,6 +6,9 @@
     
     app.controller('quoteManagementController', ['$http', '$scope', function ($http, $scope) {
         $scope.quotes = [];
+        $scope.editing = false;
+        $scope.addOrUpdateBtnText = "Add";
+        $scope.editedQuoteId = 0;
 
         $scope.getAllQuotes = function () {
             $http.get(uri + "/GetAllQuotes")
@@ -19,22 +22,53 @@
         };
         $scope.getAllQuotes();
 
-        $scope.addQuote = function () {
-            if ($scope.quote !== undefined) {
+        $scope.addOrUpdateQuote = function () {
+            if ($scope.quote !== undefined && $scope.quote !== "") {
                 var requestModel = {
                     Value: $scope.quote
                 };
-                $http.post(uri + "/AddQuote", requestModel)          
-                    .then(function successCallback(response) {
-                        console.log(response);
-                    }, function errorCallback(response) {
-                        console.log(response);
-                    });
+                if ($scope.editedQuoteId !== undefined & $scope.editedQuoteId !== 0) {
+                    requestModel["Id"] = $scope.editedQuoteId;
+                    $http.post(uri + "/UpdateQuote", requestModel)
+                        .then(function successCallback(response) {
+                            console.log(response);
+                        }, function errorCallback(response) {
+                            console.log(response);
+                        });
+                } else {
+                    $http.post(uri + "/AddQuote", requestModel)
+                        .then(function successCallback(response) {
+                            console.log(response);
+                        }, function errorCallback(response) {
+                            console.log(response);
+                        });
+                }
+                $scope.editing = false;
+                $scope.editedQuoteId = 0;
+                $scope.editedQuote = "";
+                $scope.quote = "";
+                $scope.addOrUpdateBtnText = "Add";
             }
         };
 
+        $scope.editAction = function (quoteId, quote) {
+            $scope.editing = true;
+            $scope.editedQuoteId = quoteId;
+            $scope.editedQuote = quote;
+            $scope.quote = quote;
+            $scope.addOrUpdateBtnText = "Update";
+        };
+
+        $scope.cancelEditAction = function () {
+            $scope.editing = false;
+            $scope.editedQuoteId = 0;
+            $scope.editedQuote = "";
+            $scope.quote = "";
+            $scope.addOrUpdateBtnText = "Add";
+        };
+
         $scope.updateQuote = function (quoteId) {
-            if ($scope.quote !== undefined && quoteId !== undefined) {
+             if ($scope.quote !== undefined && quoteId !== undefined) {
                 var requestModel = {
                     Id: quoteId,
                     Value: $scope.quote
@@ -45,7 +79,7 @@
                     }, function errorCallback(response) {
                         console.log(response);
                     });
-            }
+             }
         };
 
         $scope.deleteQuote = function (quoteId) {
@@ -63,6 +97,16 @@
         hub.client.addQuote = function (item) {
             $scope.quotes.push(item);
             $scope.$apply();
+        }
+
+        hub.client.updateQuote = function (item) {
+            angular.forEach($scope.quotes, function (value, key) {
+                if (value.Id == item.Id) {
+                    $scope.quotes[key] = item;
+                    $scope.$apply();
+                    return false;
+                }
+            });
         }
 
         hub.client.deleteQuote = function (item) {

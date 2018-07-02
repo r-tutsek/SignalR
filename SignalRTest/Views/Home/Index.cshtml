@@ -4,9 +4,10 @@
         <div class="quote-management-box">
             <div class="input-group">
                 <span class="input-group-addon">Enter quote:</span>
+                <span class="input-group-addon quote-management-edit-box" ng-show="editing" ng-cloak>{{editedQuote}}</span><span class="input-group-addon quote-management-cancel-edit-box" ng-show="editing" ng-click="cancelEditAction()" ng-cloak>X</span>
                 <input type="text" name="quote" class="form-control quote" ng-model="quote" />
                 <span class="input-group-btn">
-                    <button type="button" class="btn btn-primary quote-management-btn" ng-click="addQuote()">Add</button>
+                    <button type="button" class="btn btn-primary quote-management-btn" ng-click="addOrUpdateQuote()" ng-cloak>{{addOrUpdateBtnText}}</button>
                 </span>
             </div>
         </div>
@@ -28,7 +29,7 @@
                         <td>{{quoteVal.Value}}</td>
                         <td>
                             <div class="col-lg-6 no-padding">
-                                <button type="button" class="btn btn-default quote-management-action-btn" ng-click="updateQuote(quoteVal.Id)">Edit</button>
+                                <button type="button" class="btn btn-default quote-management-action-btn" ng-click="editAction(quoteVal.Id, quoteVal.Value)">Edit</button>
                             </div>
                             <div class="col-lg-6 no-padding">
                                 <button type="button" class="btn btn-danger quote-management-action-btn" ng-click="deleteQuote(quoteVal.Id)">Delete</button>

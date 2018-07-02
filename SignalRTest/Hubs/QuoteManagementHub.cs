@@ -15,6 +15,11 @@ namespace SignalRTest.Hubs
             Clients.All.AddQuote(quoteEntity);
         }
 
+        public void UpdateQuote(QuoteEntity quoteEntity)
+        {
+            Clients.All.UpdateQuote(quoteEntity);
+        }
+
         public void DeleteQuote(int quoteId)
         {
             Clients.All.RemoveQuote(quoteId);

@@ -38,6 +38,14 @@ namespace SignalRTest.Controllers
         }
 
         [HttpPost]
+        public IHttpActionResult UpdateQuote(QuoteEntity quoteEntity)
+        {
+            _quoteService.UpdateQuote(quoteEntity);
+            _hubContext.Clients.All.UpdateQuote(quoteEntity);
+            return Ok();
+        }
+
+        [HttpPost]
         public IHttpActionResult DeleteQuote(QuoteEntity quoteEntity)
         {
             _quoteService.DeleteQuote(quoteEntity.Id);
