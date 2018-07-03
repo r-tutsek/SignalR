@@ -31,10 +31,14 @@
     <div class="container body-content">
         @RenderBody()
     </div>
+    @Styles.Render("~/Content/isteven-multi-select.css")
+
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Scripts/jquery.signalR-2.3.0.min.js")
     @Scripts.Render("~/signalr/hubs")
+    @Scripts.Render("~/Scripts/isteven-multi-select.js")
     @Scripts.Render("~/Scripts/Angular/QuoteManagement.js")
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

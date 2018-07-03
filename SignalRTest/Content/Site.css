@@ -96,3 +96,45 @@ textarea {
 .quote-management-cancel-edit-box:hover {
     cursor:pointer;
 }
+
+.quote-management-text-box {
+    margin-bottom: 15px;
+    padding-left:0px !important;
+    padding-right:0px !important;
+}
+
+.quote-management-subscribtion-box {
+    margin-bottom: 15px;
+    padding-left:0px !important;
+    padding-right:0px !important;
+}
+
+.quote-management-subscribable-events {
+    max-width:100%;
+}
+
+.quote-management-section-subscribtion-list {
+    margin-bottom:15px;
+}
+
+.quote-management-subscribed-event {
+    display: inline-block;
+    border: 1px solid #000;
+    margin-right: 5px;
+    padding: 5px;
+    background-color:#000;
+    color:#fff;
+}
+
+.quote-management-subscribed-event:last-child {
+    margin-right: 0px;
+}
+
+.quote-management-subscribed-event-unsubscribe {
+    font-weight:bold;
+    color:#f00;
+}
+
+.quote-management-subscribed-event:hover {
+    cursor:pointer;
+}

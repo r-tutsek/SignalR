@@ -2,13 +2,29 @@
     <div class="quote-management-section-title"><h4>Section: Quote management</h4></div>
     <div class="quote-management-section-inner">
         <div class="quote-management-box">
-            <div class="input-group">
-                <span class="input-group-addon">Enter quote:</span>
-                <span class="input-group-addon quote-management-edit-box" ng-show="editing" ng-cloak>{{editedQuote}}</span><span class="input-group-addon quote-management-cancel-edit-box" ng-show="editing" ng-click="cancelEditAction()" ng-cloak>X</span>
-                <input type="text" name="quote" class="form-control quote" ng-model="quote" />
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-primary quote-management-btn" ng-click="addOrUpdateQuote()" ng-cloak>{{addOrUpdateBtnText}}</button>
-                </span>
+            <div class="col-md-12 quote-management-text-box">
+                <div class="input-group">
+                    <span class="input-group-addon">Enter quote:</span>
+                    <span class="input-group-addon quote-management-edit-box" ng-show="editing" ng-cloak>{{editedQuote}}</span><span class="input-group-addon quote-management-cancel-edit-box" ng-show="editing" ng-click="cancelEditAction()" ng-cloak>X</span>
+                    <input type="text" name="quote" class="form-control quote" ng-model="quote" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary quote-management-btn" ng-click="addOrUpdateQuote()" ng-cloak>{{addOrUpdateBtnText}}</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-12 quote-management-subscribtion-box">
+                <div class="input-group pull-right quote-management-section-subscribtion-list">
+                    <span class="input-group-addon">Subscribe to events:</span>
+                    <select name="events" class="selectpicker form-control quote-management-subscribable-events" ng-model="events" ng-cloak>
+                        <option ng-repeat="event in subscribableEvents" value="{{event}}">{{event}}</option>
+                    </select>
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary quote-management-btn" ng-click="subscribeToEvent()">Subscribe</button>
+                    </span>
+                </div>
+                <div>
+                    <div ng-repeat="subscribedEvent in subscribedEvents" class="quote-management-subscribed-event" title="Click to unsubscribe from event" ng-click="unsubscribeFromEvent(subscribedEvent)"  ng-cloak>{{subscribedEvent}}&nbsp;<span class="quote-management-subscribed-event-unsubscribe">X</span></div>
+                </div>
             </div>
         </div>
         <div class="quotes-management-list-box">

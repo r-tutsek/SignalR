@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.SignalR;
 using SignalRTest.Hubs;
+using SignalRTest.Models;
 using SignalRTestData.DAL;
 using SignalRTestEntity.Entity;
 using SignalRTestService.Service;
@@ -30,26 +31,49 @@ namespace SignalRTest.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult AddQuote(QuoteEntity quoteEntity)
+        public IHttpActionResult AddQuote(QuoteRequestModel requestModel)
         {
-            _quoteService.AddQuote(quoteEntity);
-            _hubContext.Clients.All.AddQuote(quoteEntity);
+            if (ModelState.IsValid)
+            {
+                var quoteEntity = new QuoteEntity
+                {
+                    Value = requestModel.Value
+                };
+                _quoteService.AddQuote(quoteEntity);
+                _hubContext.Clients.Group("add").AddQuote(quoteEntity);
+            }
             return Ok();
         }
 
         [HttpPost]
-        public IHttpActionResult UpdateQuote(QuoteEntity quoteEntity)
+        public IHttpActionResult UpdateQuote(QuoteRequestModel requestModel)
         {
-            _quoteService.UpdateQuote(quoteEntity);
-            _hubContext.Clients.All.UpdateQuote(quoteEntity);
+            if (ModelState.IsValid)
+            {
+                var quoteEntity = new QuoteEntity
+                {
+                    Id = requestModel.Id,
+                    Value = requestModel.Value
+                };
+                _quoteService.UpdateQuote(quoteEntity);
+                _hubContext.Clients.Group("update").UpdateQuote(quoteEntity);
+            }
             return Ok();
         }
 
         [HttpPost]
-        public IHttpActionResult DeleteQuote(QuoteEntity quoteEntity)
+        public IHttpActionResult DeleteQuote(QuoteRequestModel requestModel)
         {
-            _quoteService.DeleteQuote(quoteEntity.Id);
-            _hubContext.Clients.All.DeleteQuote(quoteEntity.Id);
+            if (ModelState.IsValid)
+            {
+                var quoteEntity = new QuoteEntity
+                {
+                    Id = requestModel.Id,
+                    Value = requestModel.Value
+                };
+                _quoteService.DeleteQuote(requestModel.Id);
+                _hubContext.Clients.Group("delete").DeleteQuote(requestModel.Id);
+            }
             return Ok();
         }
     }

@@ -2,9 +2,12 @@
 
     var app = angular.module('quoteManagementApp', []);
     var uri = '/api/QuoteManagement';
-    var hub = $.connection.quoteManagementHub
-    
+    var hub = $.connection.quoteManagementHub;
+    console.log($.connection);
+        
     app.controller('quoteManagementController', ['$http', '$scope', function ($http, $scope) {
+        $scope.subscribableEvents = ["add", "update", "delete"];
+        $scope.subscribedEvents = [];
         $scope.quotes = [];
         $scope.editing = false;
         $scope.addOrUpdateBtnText = "Add";
@@ -34,14 +37,14 @@
                             console.log(response);
                         }, function errorCallback(response) {
                             console.log(response);
-                        });
+                        });                   
                 } else {
                     $http.post(uri + "/AddQuote", requestModel)
                         .then(function successCallback(response) {
                             console.log(response);
                         }, function errorCallback(response) {
                             console.log(response);
-                        });
+                        });                   
                 }
                 $scope.editing = false;
                 $scope.editedQuoteId = 0;
@@ -93,12 +96,27 @@
                     console.log(response);
                 });
         };
-        
+
+        $scope.subscribeToEvent = function () {
+            if ($scope.subscribedEvents.indexOf($scope.events) == -1) {
+                $scope.subscribedEvents.push($scope.events);
+                hub.server.joinGroup($scope.subscribedEvents);
+            }
+        };
+
+        $scope.unsubscribeFromEvent = function (event) {
+            var index = -1;
+            if ((index = $scope.subscribedEvents.indexOf(event)) !== -1) {
+                $scope.subscribedEvents.splice(index, 1);
+                hub.server.leaveGroup(event);
+            }
+        };
+
         hub.client.addQuote = function (item) {
             $scope.quotes.push(item);
             $scope.$apply();
         }
-
+        
         hub.client.updateQuote = function (item) {
             angular.forEach($scope.quotes, function (value, key) {
                 if (value.Id == item.Id) {
@@ -121,6 +139,6 @@
             }
         }
 
-        $.connection.hub.start();
-    }]);
+        $.connection.hub.start();       
+    }]);    
 })();
