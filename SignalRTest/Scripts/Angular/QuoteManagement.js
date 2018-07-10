@@ -3,7 +3,7 @@
     var app = angular.module('quoteManagementApp', []);
     var uri = '/api/QuoteManagement';
     var hub = $.connection.quoteManagementHub;
-    console.log($.connection);
+    //console.log($.connection);
         
     app.controller('quoteManagementController', ['$http', '$scope', function ($http, $scope) {
         $scope.subscribableEvents = ["add", "update", "delete"];
@@ -139,6 +139,6 @@
             }
         }
 
-        $.connection.hub.start();       
+        $.connection.hub.start();
     }]);    
 })();
